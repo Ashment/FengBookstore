@@ -1,0 +1,15 @@
+{
+	"template": {
+		"ID" : 0,
+		"name" : "template",
+		"category" : "hot",
+		"price" : 25
+	},
+	"NAME": {
+		"ID" : 999,
+		"nameEN" : "NAME",
+		"nameCN" : "名字",
+		"price" : 789675,
+		"imgDir" : "/img/img.png"
+	}
+}
