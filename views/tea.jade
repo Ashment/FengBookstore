@@ -1,0 +1,26 @@
+extend layout
+
+
+
+mixin item(cName, eName, price, img, ref)
+  a(href=ref)
+    img.item(src=img)
+    div.item
+      h2= cName
+      h3= eName
+      h4= price
+
+
+
+block items
+
+  -var cNames = ["红茶1", "红茶2", "绿茶1", "绿茶2"];
+  -var eNames = ["Black Tea 1", "Black Tea 2", "Green Tea 1", "Green Tea 2"];
+  -var prices = ["¥15", "¥15", "¥15", "¥15"];
+  -var imgs = ["/img/black-tea.jpg","/img/black-tea.jpg","/img/green-tea.jpg","/img/green-tea.jpg"];
+  -var refs = ["", "", "", ""];
+
+  -var xi = cNames.length;
+  -for(var i=0; i<xi; i++){
+   +item(cNames[i], eNames[i], prices[i], imgs[i], refs[i])
+  -}

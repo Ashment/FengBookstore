@@ -1,11 +1,18 @@
-/* Reset
-Based on http://meyerweb.com/eric/thoughts/2008/01/15/resetting-again/
-Removed elements not supported in HTML5
------------------------------------------------------------------------------*/
+/*
+ * Import nib
+ */
+/*
+ * Grab a custom font from Google
+ */
+@import url("http://fonts.googleapis.com/css?family=Quicksand");
+/*
+ * Nib provides a CSS reset
+ */
 html,
 body,
 div,
 span,
+applet,
 object,
 iframe,
 h1,
@@ -19,7 +26,9 @@ blockquote,
 pre,
 a,
 abbr,
+acronym,
 address,
+big,
 cite,
 code,
 del,
@@ -29,15 +38,15 @@ img,
 ins,
 kbd,
 q,
+s,
 samp,
 small,
 strike,
 strong,
 sub,
 sup,
+tt,
 var,
-b,
-i,
 dl,
 dt,
 dd,
@@ -60,195 +69,194 @@ td {
   padding: 0;
   border: 0;
   outline: 0;
+  font-weight: inherit;
+  font-style: inherit;
+  font-family: inherit;
   font-size: 100%;
   vertical-align: baseline;
 }
-/* 
-Trigger the new block level elements in to the correct content flow
------------------------------------------------------------------------------*/
-article,
-aside,
-dialog,
-figure,
-footer,
-header,
-hgroup,
-menu,
-nav,
-section {
-  display: block;
-}
-/* Set up document
------------------------------------------------------------------------------*/
 body {
-  font: 62.5%/1.5 Helvetica, Arial, "Lucida Grande", "Lucida Sans", Tahoma, Verdana, sans-serif;
-  text-align: center;
-  background: #000;
-}
-#wrapper {
-  width: 920px;
-  text-align: left;
-  margin-left: auto;
-  margin-right: auto;
+  line-height: 1;
+  color: #000;
   background: #fff;
-  padding: 20px;
-  -webkit-border-bottom-left-radius: 15px;
-  -moz-border-bottom-left-radius: 15px;
-  -o-border-bottom-left-radius: 15px;
-  border-bottom-left-radius: 15px;
-  -webkit-border-bottom-right-radius: 15px;
-  -moz-border-bottom-right-radius: 15px;
-  -o-border-bottom-right-radius: 15px;
-  border-bottom-right-radius: 15px;
 }
-/* Typography
------------------------------------------------------------------------------*/
-h1 {
-  color: #666;
-  font: 4em 'ChunkFiveRegular';
-  line-height: 0.9em;
-  margin-bottom: 0.9em;
-}
-h2 {
-  font-size: 1.8em;
-  line-height: 1em;
-  margin-bottom: 1em;
-}
-h3 {
-  font-size: 1.6em;
-  line-height: 1.13em;
-  margin-bottom: 1.13em;
-}
-h4 {
-  font-size: 1.4em;
-  line-height: 1.29em;
-  margin-bottom: 1.29em;
-}
-h5 {
-  font-size: 1.3em;
-  line-height: 1.38em;
-  margin-bottom: 1.38em;
-}
-h6 {
-  font-size: 1.2em;
-  line-height: 1.5em;
-  margin-bottom: 1.5em;
-}
-p,
-q,
-cite,
-address,
-ul,
 ol,
-dl {
-  font-size: 1.2em;
-  line-height: 1.5em;
-  margin-bottom: 1.5em;
+ul {
+  list-style: none;
 }
-li,
-dd,
-dt {
-  font-size: 1em;
+table {
+  border-collapse: separate;
+  border-spacing: 0;
+  vertical-align: middle;
+}
+caption,
+th,
+td {
+  text-align: left;
+  font-weight: normal;
+  vertical-align: middle;
+}
+a img {
+  border: none;
+}
+/*
+ * Store the main color and
+ * background color as variables
+ */
+#header {
+  color: #fff;
+  z-index: 9001;
+  font-family: 'Quicksand';
+  text-align: center;
+  overflow: hidden;
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 8vh;
+  font-size: 7vh;
+  background: #a55e38;
+  padding-top: 2vh;
+  padding-bottom: 1vh;
+  border: 2px dotted #633822;
+  -webkit-box-shadow: 0px 0.5vh 8px 0px rgba(50,50,50,0.5);
+  box-shadow: 0px 0.5vh 8px 0px rgba(50,50,50,0.5);
+}
+#header img {
+  display: block;
+  margin-top: -3vh;
+  height: 13vh;
+}
+#header h1 {
+  position: absolute;
+  margin-top: -9.4vh;
+  margin-left: 13vh;
+  text-align: center;
+}
+#leftNav {
+  color: #fff;
+  z-index: 5000;
+  overflow: auto;
+  position: absolute;
+  top: 11.5vh;
+  left: 0;
+  right: 70vw;
+  bottom: 0;
+  background: #385077;
+  padding-left: 2px;
+  padding-right: 2px;
+  padding-top: 2px;
+  -webkit-box-shadow: 1vw 0vh 8px 0px rgba(50,50,50,0.5);
+  box-shadow: 1vw 0vh 8px 0px rgba(50,50,50,0.5);
+}
+#mainContent {
+  overflow: auto;
+  position: absolute;
+  top: 11.5vh;
+  left: 30vw;
+  width: 70vw;
+  right: 0;
+  bottom: 0;
+  background: #916a4e;
+}
+#footer {
+  overflow: hidden;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 10vh;
+  background: #faf9f0;
 }
 a {
-  text-decoration: underline;
-  color: #33c;
-  outline: none;
-}
-a:hover {
+  color: inherit;
   text-decoration: none;
 }
-code,
-samp,
-dfn,
-kbd,
-var,
-acronym,
-ins,
-del,
-abbr {
-  speak: spell-out;
+img.item {
+  overflow: hidden;
+  object-fit: cover;
+  display: block;
+  clip: rect(0, 0, 0, 0);
+  height: 20vh;
+  width: 70vw;
 }
-acronym {
-  speak: normal;
+div.item {
+  position: absolute;
+  margin-top: -16vh;
+  margin-left: 1vw;
+  width: 68vw;
 }
-/* CSS Tables
------------------------------------------------------------------------------*/
-.css-table {
-  width: 100%;
-  display: table;
+div.item h2 {
+  font-size: 4vh;
+  text-shadow: 2px 2px 4px #000;
 }
-.css-table .two-column {
-  display: table-row;
+div.item h3 {
+  margin-top: 2px;
+  font-size: 3vh;
+  text-shadow: 2px 2px 4px #000;
 }
-.css-table .two-column .cell {
-  display: table-cell;
-  vertical-align: top;
-  width: 50%;
-}
-.css-table .two-column .cell * {
-  width: 90%;
-}
-.css-table .three-column {
-  display: table-row;
-}
-.css-table .three-column .cell {
-  display: table-cell;
-  width: 33.33333%;
-}
-.css-table .three-column .cell * {
-  width: 90%;
-}
-.css-table .four-column {
-  display: table-row;
-}
-.css-table .four-column .cell {
-  display: table-cell;
-  width: 25%;
-}
-/* Header
------------------------------------------------------------------------------*/
-header {
-  background: #f00060;
-}
-header nav {
-  width: 960px;
+div.item h4 {
+  margin-right: 5vw;
+  margin-top: 1vh;
+  font-size: 4vh;
   text-align: right;
-  margin-left: auto;
-  margin-right: auto;
+  text-shadow: 2px 2px 4px #000;
 }
-header nav ul {
-  list-style: none;
-  padding: 10px;
-  margin-bottom: 0;
+div.thumbnail {
+  display: block;
+  background: #2a3c59;
+  margin-bottom: 1vh;
+  margin-top: 2px;
+  margin-left: 3px;
+  margin-right: 3px;
+  height: 10vh;
+  font-size: 30px;
+  text-align: center;
+  border-style: inset;
+  border: 1px dotted #385077;
+  -webkit-box-shadow: 0 5px 5px 0px rgba(50,50,50,0.6);
+  box-shadow: 0 5px 5px 0px rgba(50,50,50,0.6);
 }
-header nav ul li {
-  display: inline;
-  margin-left: 1%;
+div.thumbnail h2 {
+  padding-top: 3vh;
+  padding-bottom: 4vh;
 }
-header nav ul li a {
-  background: #fc9200;
-  -webkit-border-radius: 15px;
-  -moz-border-radius: 15px;
-  -o-border-radius: 15px;
-  border-radius: 15px;
-  display: inline-block;
-  padding: 5px 15px 6px;
+div.cart {
+  display: block;
+  background: #2a3c59;
+  margin-bottom: 1vh;
+  margin-top: 2px;
+  margin-left: 3px;
+  margin-right: 3px;
+  height: 15vh;
+  font-size: 30px;
+  text-align: left;
+  border-style: inset;
+  border: 1px dotted #385077;
+  -webkit-box-shadow: 0 5px 5px 0px rgba(50,50,50,0.6);
+  box-shadow: 0 5px 5px 0px rgba(50,50,50,0.6);
+}
+div.cart h2 {
+  margin-top: -4.5vh;
+  margin-left: 17.4vw;
+  position: absolute;
+}
+body {
   color: #fff;
-  text-decoration: none;
-  position: relative;
-  cursor: pointer;
+  overflow: hidden;
+/*
+   * Note the use of the `main-color`
+   * variable and the `darken` function
+   */
+  background-color: #a55e38;
+  border-bottom: 1px solid #744227;
+  text-shadow: 0px -1px 0px #744227;
 }
-header nav ul li a:hover {
-  background-color: #db0d5f;
+.container {
+  width: 100vw;
+  height: 84vh;
+  overflow: auto;
 }
-/* Footer
------------------------------------------------------------------------------*/
-footer {
-  color: #666;
-  border-top: 1px solid #ccc;
-  padding-top: 1.5em;
-}
-footer ul {
-  list-style: none;
+p {
+  line-height: 0.8;
 }

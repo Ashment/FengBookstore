@@ -1,169 +1,172 @@
-@import "mixins/css3"
-/* Reset
-Based on http://meyerweb.com/eric/thoughts/2008/01/15/resetting-again/
-Removed elements not supported in HTML5
------------------------------------------------------------------------------*/
-html, body, div, span, object, iframe,
-h1, h2, h3, h4, h5, h6, p, blockquote, pre,
-a, abbr, address, cite, code,
-del, dfn, em, img, ins, kbd, q, samp,
-small, strike, strong, sub, sup, var,
-b, i,
-dl, dt, dd, ol, ul, li,
-fieldset, form, label, legend,
-table, caption, tbody, tfoot, thead, tr, th, td 
-  margin 0
-  padding 0
-  border 0
-  outline 0
-  font-size 100%
-  vertical-align baseline
-  
-/* 
-Trigger the new block level elements in to the correct content flow
------------------------------------------------------------------------------*/
-article, aside, dialog, figure, 
-footer, header, hgroup, menu, 
-nav, section  
-  display block 
-      
+/*
+ * Import nib
+ */
+@import 'nib'
 
-/* Set up document
------------------------------------------------------------------------------*/
-body
-  font 62.5%/1.5  Helvetica, Arial, "Lucida Grande", "Lucida Sans", Tahoma, Verdana, sans-serif
+/*
+ * Grab a custom font from Google
+ */
+@import url('http://fonts.googleapis.com/css?family=Quicksand')
+
+/*
+ * Nib provides a CSS reset
+ */
+global-reset()
+
+/*
+ * Store the main color and
+ * background color as variables
+ */
+main-color = #a55e38
+background-color = #faf9f0
+category-color = #385077
+item-color = #916a4e
+
+#header
+  color #fff
+  z-index 9001
+  font-family 'Quicksand'
   text-align center
-  background #000
-
-#wrapper
-  width 920px
-  text-align left 
-  margin-left auto 
-  margin-right auto
-  background #fff
-  padding 20px
-  border-bottom-radius(15px)
-
-/* Typography
------------------------------------------------------------------------------*/
-h1
-  color #666
-  font 4em 'ChunkFiveRegular'
-  line-height 0.9em
-  margin-bottom 0.9em
-
-h2 
-  font-size: 1.8em
-  line-height 1em
-  margin-bottom 1em
-
-h3 
-  font-size 1.6em
-  line-height 1.13em
-  margin-bottom 1.13em
-
-h4 
-  font-size 1.4em
-  line-height 1.29em
-  margin-bottom 1.29em
-
-h5 
-  font-size 1.3em
-  line-height 1.38em
-  margin-bottom 1.38em
-
-h6 
-  font-size 1.2em
-  line-height 1.5em
-  margin-bottom 1.5em 
-
-p, q, cite, address, ul, ol, dl
-  font-size 1.2em
-  line-height 1.5em
-  margin-bottom 1.5em 
-
-li, dd, dt
-  font-size 1em 
-
+  overflow hidden
+  position absolute
+  top 0
+  left 0
+  right 0
+  height 8vh
+  font-size 7vh
+  background main-color
+  padding-top 2vh
+  padding-bottom 1vh
+  border 2px dotted darken(main-color, 40%)
+  box-shadow 0px 0.5vh 8px 0px rgba(50,50,50,0.5)
+  img
+    display block
+    margin-top -3vh
+    height 13vh
+  h1
+    position absolute
+    margin-top -9.4vh
+    margin-left 13vh
+    text-align center
+    
+  
+#leftNav
+  color #fff
+  z-index 5000
+  overflow auto
+  position absolute
+  top 11.5vh
+  left 0
+  right 70vw
+  bottom 0
+  background category-color
+  padding-left 2px
+  padding-right 2px
+  padding-top 2px
+  box-shadow 1vw 0vh 8px 0px rgba(50,50,50,0.5)
+  
+#mainContent
+  overflow auto
+  position absolute
+  top 11.5vh
+  left 30vw
+  width 70vw
+  right 0
+  bottom 0
+  background item-color
+#footer
+  overflow hidden
+  position absolute
+  bottom 0
+  left 0
+  right 0
+  height 10vh
+  background background-color
+  
 a
-  text-decoration underline
-  color #3333cc
-  outline none
-
-a:hover
+  color inherit
   text-decoration none
 
-code, samp, dfn, kbd, var, acronym, ins, del
-
-abbr 
-  speak spell-out
-
-acronym 
-  speak normal
-
-
-/* CSS Tables
------------------------------------------------------------------------------*/
-.css-table
-  width 100%
-  display table
-  .two-column
-    display table-row
-    .cell
-      display table-cell
-      vertical-align top
-      width 50%
-      *
-        width 90%
-  .three-column
-    display table-row
-    .cell
-      display table-cell
-      width 33.33333%
-      *
-        width 90%
-  .four-column
-    display table-row
-    .cell
-      display table-cell
-      width 25%
-
-/* Header
------------------------------------------------------------------------------*/
-header
-  background #F00060
-  nav 
-    width 960px
+img.item
+  overflow hidden
+  object-fit cover
+  display block
+  clip rect(0, 0, 0, 0)
+  height 20vh
+  width 70vw
+  
+div.item
+  position absolute
+  margin-top -16vh
+  margin-left 1vw
+  width 68vw
+  h2
+    font-size 4vh
+    text-shadow 2px 2px 4px #000000
+  h3
+    margin-top 2px
+    font-size 3vh
+    text-shadow 2px 2px 4px #000000
+  h4
+    margin-right 5vw
+    margin-top 1vh
+    font-size 4vh
     text-align right
-    margin-left auto 
-    margin-right auto
-    ul 
-      list-style none
-      padding 10px
-      margin-bottom 0
-      li 
-        display inline
-        margin-left 1%
-        a 
-          background #fc9200 
-          border-radius(15px)
-          display inline-block
-          padding 5px 15px 6px 
-          color #fff
-          text-decoration none
-          position relative
-          cursor pointer
-          &:hover
-            background-color #db0d5f 
+    text-shadow 2px 2px 4px #000000
 
-/* Footer
------------------------------------------------------------------------------*/
-footer
-  color #666
-  border-top 1px solid #ccc
-  padding-top 1.5em
-  ul 
-    list-style none
+  
 
+div.thumbnail
+  display block
+  background darken(category-color, 25%)
+  margin-bottom 1vh
+  margin-top 2px
+  margin-left 3px
+  margin-right 3px
+  height 10vh
+  font-size 30px
+  text-align center
+  border-style inset
+  border 1px dotted category-color
+  box-shadow 0 5px 5px 0px rgba(50,50,50,0.6)
+  h2
+    padding-top: 3vh
+    padding-bottom: 4vh
+    
+div.cart
+  display block
+  background darken(category-color, 25%)
+  margin-bottom 1vh
+  margin-top 2px
+  margin-left 3px
+  margin-right 3px
+  height 15vh
+  font-size 30px
+  text-align left
+  border-style inset
+  border 1px dotted category-color
+  box-shadow 0 5px 5px 0px rgba(50,50,50,0.6)
+  h2
+    margin-top -4.5vh
+    margin-left 17.4vw
+    position absolute
+    
 
+body
+  color #fff
+  overflow hidden
+  /*
+   * Note the use of the `main-color`
+   * variable and the `darken` function
+   */
+  background-color main-color
+  border-bottom 1px solid darken(main-color, 30%)
+  text-shadow 0px -1px 0px darken(main-color, 30%)
 
+.container
+  width 100vw
+  height 84vh
+  overflow auto
+
+p
+  line-height 0.8

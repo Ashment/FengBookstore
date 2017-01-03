@@ -1,0 +1,26 @@
+extend layout
+
+
+
+mixin item(cName, eName, price, img, ref)
+  a(href=ref)
+    img.item(src=img)
+    div.item
+      h2= cName
+      h3= eName
+      h4= price
+
+
+
+block items
+
+  -var cNames = ["意大利浓缩", "美式咖啡", "拿铁咖啡", "热奶咖啡"];
+  -var eNames = ["Espresso", "Cafe Americano", "Cafe Latte", "Cappucino"];
+  -var prices = ["¥18", "¥20", "¥25", "¥25"];
+  -var imgs = ["/img/espresso.jpg","/img/americano.jpg","/img/cafe-latte.jpg","/img/cappuccino.jpg"];
+  -var refs = ["", "", "", ""];
+
+  -var xi = cNames.length;
+  -for(var i=0; i<xi; i++){
+   +item(cNames[i], eNames[i], prices[i], imgs[i], refs[i])
+  -}

@@ -5,7 +5,7 @@ var cookieParser = require('cookie-parser');
 var menuitems = require('../menuitems.json');
 
 router.get('/', function(req, res){
-  res.render('index', {
+  res.render('tea', {
     title: 'Home'
   });
 });

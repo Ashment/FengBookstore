@@ -1,37 +1,33 @@
+meta(name="HandheldFriendly", content="true")
+meta(name="MobileOptimized", content="320")
+meta(name="viewport", content="initial-scale=1.0, maximum-scale=1.0, width=device-width, user-scalable=no")
+
+mixin thumb(category, ref)
+  a(href= ref)
+    div.thumbnail
+      h2= category
+
 doctype
 html
   head
-    title= title
+    title #{title} - 城市书房
     link(rel='stylesheet', href='/stylesheets/style.css')
-    link(rel='stylesheet', href='/stylesheets/chunkfive-fontface.css')
   body
-    header
-      nav
-        ul
-          li 
-            a(href="/") Home
-          li 
-            a(href="/about") About
-          li 
-            a(href="/contact") Contact
-          li
-            a(href="/789562") Register
-          li
-            a(href="/jsoncheck") Json Check
-          li
-            a(href="/jsontest/read") JsonT Read
-          li
-            a(href="/jsontest/write") JsonT Write
-    section#wrapper
-      block content
-      footer 
-        section.css-table
-          section.four-column
-            section.cell
-              p Mauris porttitor <br />felis eu leo aliquet<br /> ac rutrum odio aliquet
-            section.cell
-              p Mauris porttitor <br />felis eu leo aliquet<br /> ac rutrum odio aliquet
-            section.cell
-              p Mauris porttitor <br />felis eu leo aliquet<br /> ac rutrum odio aliquet
-            section.cell
-              p Mauris porttitor <br />felis eu leo aliquet<br /> ac rutrum odio aliquet
+    div#header
+        img(src="/img/BookstoreIco.png")
+        h1 城市书房
+    div#leftNav
+
+      -var categories = ["热饮", "冷饮", "茶", "零食"];
+      -var refs = ["", "", "", ""];
+      -var xi = categories.length;
+      -for(var i=0; i<xi; i++){
+       +thumb(categories[i],refs[i])
+      -}
+      a(href="")
+        div.cart
+          img(src="/img/cart.png" style="height: 80%; display: block; margin: auto; margin-top: 1vh; margin-bottom: 1vh;")
+          h2 77
+
+    div#mainContent
+      block items
