@@ -1,0 +1,25 @@
+extend layout
+
+
+
+mixin item(cName, eName, price, img, ref)
+  a(href=ref)
+    img.item(src=img)
+    div.item
+      h2= cName
+      h3= eName
+      h4= price
+
+
+block items
+
+  -var cNames = #{pageData.cNames};
+  -var eNames = #{pageData.eNames};
+  -var prices = #{pageData.prices};
+  -var imgs = #{pageData.imgs};
+
+  -var xi = cNames.length;
+  -for(var i=0; i<xi; i++){
+    -var c = "/TrzpbrGtpzVsty/" + i.toString();
+   +item(cNames[i], eNames[i], prices[i], imgs[i], "")
+  -}
