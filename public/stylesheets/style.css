@@ -125,12 +125,13 @@ a img {
 #header img {
   display: block;
   margin-top: -3vh;
+  margin-left: 1vh;
   height: 13vh;
 }
 #header h1 {
   position: absolute;
   margin-top: -9.4vh;
-  margin-left: 13vh;
+  margin-left: 14vh;
   text-align: center;
 }
 #leftNav {

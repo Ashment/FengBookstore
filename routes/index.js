@@ -4,23 +4,43 @@ var cookieParser = require('cookie-parser');
 
 var menuitems = require('../menuitems.json');
 
+var cart = [];
+
 router.get('/', function(req, res){
+  res.render('hot', {
+    title: '热饮'
+  });
+});
+
+router.get('/tea', function(req, res){
   res.render('tea', {
-    title: 'Home'
+    title: '茶'
   });
 });
 
-router.get('/about', function(req, res){
-  res.render('about', {
-    title: 'About'
+router.get('/hot', function(req, res){
+  res.render('hot', {
+    title: '热饮'
   });
 });
 
-router.get('/contact', function(req, res){
-  res.render('contact', {
-    title: 'Contact'
-  });
+router.get('/addtocart/:idnum?', function(req,res){
+  cart.push(req.params.idnum);
+  res.redirect('back');
 });
+
+router.get('/clearcart', function(req,res){
+  var artemp = [];
+  cart = artemp;
+  res.redirect('back');
+});
+
+router.get('/cart', function(req,res){
+  res.send(cart);
+});
+
+
+
 
 //Test Reading JSON file
 router.get('/jsoncheck', function(req,res){
@@ -31,11 +51,11 @@ router.get('/jsoncheck', function(req,res){
 router.get('/:num?', function(req,res){
 	if(req.params.num)
     {
-		res.send("Registered ID" + req.params.num);
+		  res.send("Registered ID" + req.params.num);
     }
     else
     {
-        res.send("No Register");
+      res.send("No Register");
     }
 });
 
