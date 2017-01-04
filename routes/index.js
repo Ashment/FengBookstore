@@ -8,19 +8,34 @@ var cart = [];
 
 router.get('/', function(req, res){
   res.render('hot', {
-    title: '热饮'
+    title: '热饮',
+
+    pageData : {
+      cartCount : cart.length
+    }
+    
   });
 });
 
 router.get('/tea', function(req, res){
   res.render('tea', {
-    title: '茶'
+    title: '茶',
+
+    pageData : {
+      cartCount : cart.length
+    }
+    
   });
 });
 
 router.get('/hot', function(req, res){
   res.render('hot', {
-    title: '热饮'
+    title: '热饮',
+
+    pageData : {
+      cartCount : cart.length
+    }
+    
   });
 });
 
