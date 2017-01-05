@@ -173,6 +173,32 @@ a {
   color: inherit;
   text-decoration: none;
 }
+div.cartend {
+  overflow: hidden;
+  height: 20vh;
+  width: 70vw;
+  text-align: center;
+  z-index: -1;
+}
+div.cartend h1 {
+  font-size: 6vh;
+  padding-top: 6vh;
+  padding-bottom: 1vh;
+}
+div.cartend a.left {
+  width: 25vw;
+  height: 20vh;
+  float: left;
+  background: #db5353;
+  -webkit-box-shadow: 3vw 0vh 8px 0px rgba(50,50,50,0.5);
+  box-shadow: 3vw 0vh 8px 0px rgba(50,50,50,0.5);
+}
+div.cartend a.right {
+  width: 45vw;
+  height: 20vh;
+  float: right;
+  background: #4cc273;
+}
 img.item {
   overflow: hidden;
   object-fit: cover;
@@ -180,6 +206,8 @@ img.item {
   clip: rect(0, 0, 0, 0);
   height: 20vh;
   width: 70vw;
+  -webkit-box-shadow: 0px 0.5vh 8px 0px rgba(50,50,50,0.5);
+  box-shadow: 0px 0.5vh 8px 0px rgba(50,50,50,0.5);
 }
 div.item {
   position: absolute;
@@ -241,6 +269,63 @@ div.cart h2 {
   margin-top: -4.5vh;
   margin-left: 17.4vw;
   position: absolute;
+}
+div.alert {
+  position: fixed;
+  top: 8vh;
+  bottom: 0;
+  left: 30vw;
+  right: 0;
+  background: rgba(0,0,0,0.6);
+  visibility: hidden;
+  opacity: 0;
+  -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=0)";
+  filter: alpha(opacity=0);
+  -webkit-transition: opacity 800ms;
+  -moz-transition: opacity 800ms;
+  -o-transition: opacity 800ms;
+  -ms-transition: opacity 800ms;
+  transition: opacity 800ms;
+  z-index: 10000;
+}
+div.alert div.popup {
+  position: relative;
+  display: block;
+  border-radius: 15px;
+  margin-left: 20vw;
+  width: 30vw;
+  height: 30vh;
+  text-align: center;
+  background: #385077;
+}
+div.alert div.popup h1 {
+  margin-top: 10vw;
+  padding-top: 5vh;
+  font-size: 5vw;
+}
+div.alert div.popup a {
+  display: block;
+  width: 10vw;
+  height: 5vh;
+  border-radius: 10px;
+  margin-top: 3vw;
+  padding-top: 2vh;
+}
+div.alert div.popup a#cancel {
+  float: left;
+  margin-left: 3vw;
+  background: #db5353;
+}
+div.alert div.popup a#confirm {
+  float: right;
+  margin-right: 3vw;
+  background: #4cc273;
+}
+div.alert:target {
+  visibility: visible;
+  opacity: 1;
+  -ms-filter: none;
+  filter: none;
 }
 body {
   color: #fff;
