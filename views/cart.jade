@@ -8,19 +8,20 @@ mixin item(cName, eName, price, img, ref)
     div.item
       h2= cName
       h3= eName
-      h4= price
+      h4= prce
 
 
 block items
 
-  -var cNames = #{pageData.cNames};
-  -var eNames = #{pageData.eNames};
-  -var prices = #{pageData.prices};
-  -var imgs = #{pageData.imgs};
+  -var cNames = pageData.cNamesAr;
+  -var eNames = pageData.eNamesAr;
+  -var prices = pageData.pricesAr;
+  -var imgs = pageData.imgsAr;
 
-  -var xi = cNames.length;
-  -for(var i=0; i<xi; i++){
+  -var curCount = pageData.cartCount;
+
+  -for(var i=0; i<curCount; i++){
     -var remove = "/TrzpbrGtpzVsty/" + i.toString();
     -var prce = "¥" + prices[i].toString();
-   +item(cNames[i], eNames[i], prices[i], imgs[i], remove)
+    +item(cNames[i], eNames[i], prices[i], imgs[i], remove)
   -}

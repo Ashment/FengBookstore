@@ -39,27 +39,82 @@ router.get('/hot', function(req, res){
   });
 });
 
-router.get('/addtocart/:idnum?', function(req,res){
+//Add To Cart (move each character right one key on keyboard)
+router.get('/SffYpVsty/:idnum?', function(req,res){
   cart.push(req.params.idnum);
   res.redirect('back');
 });
 
-router.get('/clearcart', function(req,res){
+//Remove From Cart (move each character right one key on keyboard)
+router.get('/TrzpbrGtpzVsty/:indnum?', function(req,res){
+  cart.splice(req.params.indnum, 1);
+  res.redirect('back');
+});
+
+//Clear Cart (move each character right one key on keyboard)
+router.get('/VarstVsty', function(req,res){
   var artemp = [];
   cart = artemp;
   res.redirect('back');
 });
 
+//Go to Cart
 router.get('/cart', function(req,res){
-  res.send(cart);
-});
+  var jString = JSON.stringify(menuitems);
+  var items = eval(jString);
 
+  var enNamesArr = [];
+  var cnNamesArr = [];
+  var pricesArr = [];
+  var imgDirsArr = [];
+
+  for (var i=0; i<cart.length; i++) {
+    for(var x=0; x<items.length; x++){
+      if(cart[i].toString() == items[x].ID.toString()){
+        enNamesArr.push(("" + items[x].nameEN));
+        cnNamesArr.push(("" + items[x].nameCN));
+        pricesArr.push(("" + items[x].price));
+        imgDirsArr.push(("" + items[x].imgDir));
+      }
+    }
+  }
+
+  
+  //res.send(enNamesArr);
+  //res.send(cnNamesArr);
+  //res.send(pricesArr);
+  //res.send(imgDirsArr);
+  
+  
+  res.render('cart', {
+    title: 'Cart',
+
+    pageData : {
+      cartCount : cart.length,
+      cNamesAr : cnNamesArr,
+      eNamesAr : enNamesArr,
+      pricesAr : pricesArr,
+      imgsAr : imgDirsArr
+    }
+  });
+
+
+});
 
 
 
 //Test Reading JSON file
 router.get('/jsoncheck', function(req,res){
-	res.send(JSON.stringify(menuitems.template.ID + ' <ID ... Price> ' + menuitems.template.price));
+	//res.send(JSON.stringify(menuitems.items.template.name + ' III ID ... Price III ' + menuitems.items.template.category));
+  var jString = JSON.stringify(menuitems);
+  var arrayofObjects = eval(jString);
+  var checkString = "";
+  var namesArr = [];
+  for(var i=0; i<arrayofObjects.length; i++){
+    namesArr.push(("" + arrayofObjects[i].ID));
+  }
+
+  res.send(namesArr);
 });
 
 //Testing Parsing URL HTTP Request

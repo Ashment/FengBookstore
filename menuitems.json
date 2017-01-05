@@ -1,33 +1,35 @@
-{
-	"template": {
+[
+	{
 		"ID" : 0,
-		"name" : "template",
+		"nameEN" : "templateEN",
+		"nameCN" : "templateCN",
 		"category" : "hot",
 		"price" : 25
 	},
 
-	"101": {
+
+	{
 		"ID" : 101,
 		"nameEN" : "Espresso",
 		"nameCN" : "意大利浓缩",
 		"price" : 18,
-		"imgDir" : "/img/americano.jpg"
+		"imgDir" : "/img/espresso.jpg"
 	},
-	"102": {
+	{
 		"ID" : 102,
 		"nameEN" : "Americano",
 		"nameCN" : "美式咖啡",
 		"price" : 20,
 		"imgDir" : "/img/americano.jpg"
 	},
-	"103": {
+	{
 		"ID" : 103,
 		"nameEN" : "Cafe Latte",
 		"nameCN" : "拿铁咖啡",
 		"price" : 20,
 		"imgDir" : "/img/cafe-latte.jpg"
 	},
-	"104": {
+	{
 		"ID" : 104,
 		"nameEN" : "Cappuccino",
 		"nameCN" : "热奶咖啡",
@@ -35,11 +37,13 @@
 		"imgDir" : "/img/cappuccino.jpg"
 	},
 
-	"201": {
+
+
+	{
 		"ID" : 201,
 		"nameEN" : "Pu Er Tea",
 		"nameCN" : "普洱茶",
 		"price" : 28,
 		"imgDir" : "/img/puer.jpg"
 	}
-}
+]
