@@ -4,36 +4,52 @@ var cookieParser = require('cookie-parser');
 
 var menuitems = require('../menuitems.json');
 
-var cart = [];
-
 router.get('/', function(req, res){
+  var curCartCount = 0;
+
+  if(req.cookies.cartCookie != null){
+    curCartCount = req.cookies.cartCookie.length;
+  }
+
   res.render('hot', {
     title: '热饮',
 
     pageData : {
-      cartCount : cart.length
+      cartCount : curCartCount
     }
     
   });
 });
 
 router.get('/tea', function(req, res){
+  var curCartCount = 0;
+
+  if(req.cookies.cartCookie != null){
+    curCartCount = req.cookies.cartCookie.length;
+  }
+
   res.render('tea', {
     title: '茶',
 
     pageData : {
-      cartCount : cart.length
+      cartCount : curCartCount
     }
     
   });
 });
 
 router.get('/hot', function(req, res){
+  var curCartCount = 0;
+
+  if(req.cookies.cartCookie != null){
+    curCartCount = req.cookies.cartCookie.length;
+  }
+
   res.render('hot', {
     title: '热饮',
 
     pageData : {
-      cartCount : cart.length
+      cartCount : curCartCount
     }
     
   });
@@ -41,25 +57,47 @@ router.get('/hot', function(req, res){
 
 //Add To Cart (move each character right one key on keyboard)
 router.get('/SffYpVsty/:idnum?', function(req,res){
-  cart.push(req.params.idnum);
+  var cartTemp = [];
+  if(req.cookies.cartCookie != null){
+    cartTemp = req.cookies.cartCookie;
+  }
+
+  cartTemp.push(req.params.idnum);
+
+  res.cookie('cartCookie', cartTemp);
   res.redirect('back');
 });
 
 //Remove From Cart (move each character right one key on keyboard)
 router.get('/TrzpbrGtpzVsty/:indnum?', function(req,res){
-  cart.splice(req.params.indnum, 1);
+  var cartTemp = [];
+  if(req.cookies.cartCookie != null){
+    cartTemp = req.cookies.cartCookie;
+  }
+
+  if(req.params.indnum < cartTemp.length){
+    cartTemp.splice(req.params.indnum, 1);
+  }
+
+  res.cookie('cartCookie', cartTemp);
   res.redirect('back');
 });
 
 //Clear Cart (move each character right one key on keyboard)
 router.get('/VarstVsty', function(req,res){
   var artemp = [];
-  cart = artemp;
+  req.cookies.cartCookie = artemp;
   res.redirect('back');
 });
 
 //Go to Cart
 router.get('/cart', function(req,res){
+  cartTemp = [];
+
+  if(req.cookies.cartCookie != null){
+    cartTemp = req.cookies.cartCookie;
+  }
+
   var jString = JSON.stringify(menuitems);
   var items = eval(jString);
 
@@ -68,9 +106,9 @@ router.get('/cart', function(req,res){
   var pricesArr = [];
   var imgDirsArr = [];
 
-  for (var i=0; i<cart.length; i++) {
+  for (var i=0; i<cartTemp.length; i++) {
     for(var x=0; x<items.length; x++){
-      if(cart[i].toString() == items[x].ID.toString()){
+      if(cartTemp[i].toString() == items[x].ID.toString()){
         enNamesArr.push(("" + items[x].nameEN));
         cnNamesArr.push(("" + items[x].nameCN));
         pricesArr.push(("" + items[x].price));
@@ -90,7 +128,7 @@ router.get('/cart', function(req,res){
     title: 'Cart',
 
     pageData : {
-      cartCount : cart.length,
+      cartCount : cartTemp.length,
       cNamesAr : cnNamesArr,
       eNamesAr : enNamesArr,
       pricesAr : pricesArr,
@@ -143,7 +181,8 @@ router.get('/jsontest/write/:num?', function(req,res){
 
 //Test Cookie Read
 router.get('/jsontest/read', function(req,res){
-	res.send(req.cookies.iii + ' iii and arr ' + req.cookies.arr);
+	//res.send(req.cookies.iii + ' iii and arr ' + req.cookies.arr);
+  res.send(req.cookies.cartCookie);
 });
 
 module.exports = router;
