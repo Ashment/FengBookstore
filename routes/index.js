@@ -22,57 +22,20 @@ router.get('/', function(req, res){
   });*/
 });
 
-router.get('/tea', function(req, res){
-  var curCartCount = 0;
-
-  if(req.cookies.cartCookie != null){
-    curCartCount = req.cookies.cartCookie.length;
-  }
-
-
-  //var reqItems = itemSearch(200, 300);
-
-  var jString = JSON.stringify(menuitems);
-  var itemss = eval(jString);
-  res.send(itemss[1]);
-  /*var results = [];
-
-  for(var i=0; i<itemss.length; i++){
-    var ident = Number(itemss[i].ID);
-    if(ident > minID && ident < maxID){
-      results.push(itemss[i]);
-    }
-  }*/
-
-  res.render('index', {
-    title: '茶',
-
-    pageData : {
-      cartCount : curCartCount,
-      cNames: [],
-      eNames: [],
-      prices: [],
-      imgs: [],
-      IDs: []
-    }    
-  });
+router.get('/coffee', function(req, res){
+  itemPageRender(req, res, '咖啡', 100, 200);
 });
 
-router.get('/coffee', function(req, res){
-  var curCartCount = 0;
+router.get('/tea', function(req, res){
+  itemPageRender(req, res, '茶', 200, 300);
+});
 
-  if(req.cookies.cartCookie != null){
-    curCartCount = req.cookies.cartCookie.length;
-  }
+router.get('/drinks', function(req, res){
+  itemPageRender(req, res, '饮料', 300, 400);
+});
 
-  res.render('index', {
-    title: '热饮',
-
-    pageData : {
-      cartCount : curCartCount
-    }
-    
-  });
+router.get('/foods', function(req, res){
+  itemPageRender(req, res, '食品', 400, 500);
 });
 
 //Add To Cart (move each character right one key on keyboard)
@@ -106,8 +69,8 @@ router.get('/TrzpbrGtpzVsty/:indnum?', function(req,res){
 //Clear Cart (move each character right one key on keyboard)
 router.get('/VarstVsty', function(req,res){
   var artemp = [];
-  req.cookies.cartCookie = artemp;
-  res.redirect('back');
+  res.clearCookie('cartCookie');
+  res.redirect('/cart');
 });
 
 //Go to Cart
@@ -207,17 +170,65 @@ router.get('/jsontest/read', function(req,res){
 
 module.exports = router;
 
-/*function itemSearch(minID, maxID){
+function SenderinoRenderino(strr){
+  res.send(strr);
+}
+
+function itemPageRender(reqObj, resObj, catName, minSID, maxSID){
+  var curCartCount = 0;
+
+  //Load cart cookie if it exists
+  if(reqObj.cookies.cartCookie != null){
+    curCartCount = reqObj.cookies.cartCookie.length;
+  }
+
+  //Search between given ID numbers
+  //Coffee(100s); Tea(200s); Drinks(300s); Foods(400s)
+  var reqItems = itemSearch(minSID, maxSID);
+
+  var IDsArr = [];
+  var enNamesArr = [];
+  var cnNamesArr = [];
+  var pricesArr = [];
+  var imgDirsArr = [];
+
+  //Push parameters to parameter arrays
+  for (var i=0; i<reqItems.length; i++) {
+    IDsArr.push(("" + reqItems[i].ID));
+    enNamesArr.push(("" + reqItems[i].nameEN));
+    cnNamesArr.push(("" + reqItems[i].nameCN));
+    pricesArr.push(("" + reqItems[i].price));
+    imgDirsArr.push(("" + reqItems[i].imgDir));
+  }
+
+  resObj.render('index', {
+    title: catName,
+
+    pageData : {
+      cartCount : curCartCount,
+      cNames: cnNamesArr,
+      eNames: enNamesArr,
+      prices: pricesArr,
+      imgs: imgDirsArr,
+      IDs: IDsArr
+    }    
+  });
+}
+
+
+
+function itemSearch(minID, maxID){
   var jString = JSON.stringify(menuitems);
   var itemss = eval(jString);
-  results = [];
+
+  var results = [];
 
   for(var i=0; i<itemss.length; i++){
-    var ident = Number(itemss[i].ID);
+    var ident = Number(itemss[i].ID.toString());
     if(ident > minID && ident < maxID){
       results.push(itemss[i]);
     }
   }
 
   return results;
-}*/
+}

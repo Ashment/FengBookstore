@@ -28,12 +28,12 @@ html
     div#leftNav
 
       -var categories = ["热饮", "冷饮", "茶", "食品"];
-      -var refs = ["/hot", "", "/tea", ""];
+      -var refs = ["/coffee", "/drinks", "/tea", "/foods"];
       -var xi = categories.length;
       -for(var i=0; i<xi; i++){
        +thumb(categories[i],refs[i])
       -}
-      a(href="")
+      a(href="/cart")
         div.cart
           img(src="/img/cart.png" style="height: 80%; display: block; margin: auto; margin-top: 1vh; margin-bottom: 1vh;")
           h2 #{pageData.cartCount}
