@@ -6,13 +6,11 @@
 		"category" : "hot",
 		"price" : 25
 	},
-
-
 	{
 		"ID" : 101,
 		"nameEN" : "Espresso",
-		"nameCN" : "意大利浓缩",
-		"price" : 18,
+		"nameCN" : "意式咖啡",
+		"price" : 20,
 		"imgDir" : "/img/espresso.jpg"
 	},
 	{
@@ -24,26 +22,140 @@
 	},
 	{
 		"ID" : 103,
-		"nameEN" : "Cafe Latte",
-		"nameCN" : "拿铁咖啡",
-		"price" : 20,
-		"imgDir" : "/img/cafe-latte.jpg"
+		"nameEN" : "Cappuccino",
+		"nameCN" : "卡布奇诺",
+		"price" : 25,
+		"imgDir" : "/img/cappuccino.jpg"
 	},
 	{
 		"ID" : 104,
-		"nameEN" : "Cappuccino",
-		"nameCN" : "热奶咖啡",
-		"price" : 20,
-		"imgDir" : "/img/cappuccino.jpg"
+		"nameEN" : "Cafe Latte",
+		"nameCN" : "拿铁咖啡",
+		"price" : 30,
+		"imgDir" : "/img/cafe-latte.jpg"
 	},
+	{
+		"ID" : 105,
+		"nameEN" : "Mocha",
+		"nameCN" : "摩卡咖啡",
+		"price" : 20,
+		"imgDir" : "/img/mocha.jpg"
+	},
+	{
+		"ID" : 106,
+		"nameEN" : "Caramel Macchiato",
+		"nameCN" : "冰糖玛厅朵",
+		"price" : 20,
+		"imgDir" : "/img/macchiato.jpg"
+	},
+
 
 
 
 	{
 		"ID" : 201,
-		"nameEN" : "Pu Er Tea",
-		"nameCN" : "普洱茶",
-		"price" : 28,
+		"nameEN" : "Ripe Pu-erh",
+		"nameCN" : "陈年熟普",
+		"price" : 48,
 		"imgDir" : "/img/puer.jpg"
+	},
+	{
+		"ID" : 202,
+		"nameEN" : "Assam",
+		"nameCN" : "阿萨姆",
+		"price" : 48,
+		"imgDir" : "/img/assam.jpg"
+	},
+	{
+		"ID" : 203,
+		"nameEN" : "Darjeeling",
+		"nameCN" : "大吉岭",
+		"price" : 48,
+		"imgDir" : "/img/darjeeling.jpg"
+	},
+	{
+		"ID" : 204,
+		"nameEN" : "Jin Jun Mei",
+		"nameCN" : "金骏眉",
+		"price" : 48,
+		"imgDir" : "/img/jinjunmei.jpg"
+	},
+
+
+
+
+	{
+		"ID" : 301,
+		"nameEN" : "Hot Chocolate",
+		"nameCN" : "热巧克力",
+		"price" : 28,
+		"imgDir" : "/img/hotChocolate.jpg"
+	},
+	{
+		"ID" : 302,
+		"nameEN" : "Green Tea Latte",
+		"nameCN" : "抹茶拿铁",
+		"price" : 28,
+		"imgDir" : "/img/greenTeaLatte.jpg"
+	},
+	{
+		"ID" : 303,
+		"nameEN" : "Lemon Black Tea",
+		"nameCN" : "柠檬红茶",
+		"price" : 18,
+		"imgDir" : "/img/lemonBlackTea.jpg"
+	},
+	{
+		"ID" : 304,
+		"nameEN" : "Black Tea Latte",
+		"nameCN" : "柚子茶",
+		"price" : 25,
+		"imgDir" : "/img/blackTeaLatte.jpg"
+	},
+	{
+		"ID" : 305,
+		"nameEN" : "Pomelo Tea",
+		"nameCN" : "柚子茶",
+		"price" : 25,
+		"imgDir" : "/img/pomeloTea.jpg"
+	},
+	{
+		"ID" : 306,
+		"nameEN" : "Red Jujube Tea",
+		"nameCN" : "红枣茶",
+		"price" : 25,
+		"imgDir" : "/img/jujubeTea.jpg"
+	},
+
+
+
+
+	{
+		"ID" : 401,
+		"nameEN" : "Watermelon Seeds",
+		"nameCN" : "西瓜子",
+		"price" : 10,
+		"imgDir" : "/img/watermelonSeeds.jpg"
+	},
+	{
+		"ID" : 402,
+		"nameEN" : "Pumpkin Seeds",
+		"nameCN" : "南瓜子",
+		"price" : 10,
+		"imgDir" : "/img/pumpkinSeeds.jpg"
+	},
+	{
+		"ID" : 403,
+		"nameEN" : "Peanuts",
+		"nameCN" : "花生",
+		"price" : 10,
+		"imgDir" : "/img/peanuts.jpg"
+	},
+	{
+		"ID" : 404,
+		"nameEN" : "Grilled Wings",
+		"nameCN" : "烤翅中",
+		"price" : 25,
+		"imgDir" : "/img/wings.jpg"
 	}
 ]

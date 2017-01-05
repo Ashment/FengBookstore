@@ -5,20 +5,21 @@ var cookieParser = require('cookie-parser');
 var menuitems = require('../menuitems.json');
 
 router.get('/', function(req, res){
-  var curCartCount = 0;
+  res.redirect('/tea');
+  /*var curCartCount = 0;
 
   if(req.cookies.cartCookie != null){
     curCartCount = req.cookies.cartCookie.length;
   }
 
-  res.render('hot', {
-    title: '热饮',
+  res.render('index', {
+    title: '咖啡',
 
     pageData : {
       cartCount : curCartCount
     }
     
-  });
+  });*/
 });
 
 router.get('/tea', function(req, res){
@@ -28,24 +29,43 @@ router.get('/tea', function(req, res){
     curCartCount = req.cookies.cartCookie.length;
   }
 
-  res.render('tea', {
+
+  //var reqItems = itemSearch(200, 300);
+
+  var jString = JSON.stringify(menuitems);
+  var itemss = eval(jString);
+  res.send(itemss[1]);
+  /*var results = [];
+
+  for(var i=0; i<itemss.length; i++){
+    var ident = Number(itemss[i].ID);
+    if(ident > minID && ident < maxID){
+      results.push(itemss[i]);
+    }
+  }*/
+
+  res.render('index', {
     title: '茶',
 
     pageData : {
-      cartCount : curCartCount
-    }
-    
+      cartCount : curCartCount,
+      cNames: [],
+      eNames: [],
+      prices: [],
+      imgs: [],
+      IDs: []
+    }    
   });
 });
 
-router.get('/hot', function(req, res){
+router.get('/coffee', function(req, res){
   var curCartCount = 0;
 
   if(req.cookies.cartCookie != null){
     curCartCount = req.cookies.cartCookie.length;
   }
 
-  res.render('hot', {
+  res.render('index', {
     title: '热饮',
 
     pageData : {
@@ -187,3 +207,17 @@ router.get('/jsontest/read', function(req,res){
 
 module.exports = router;
 
+/*function itemSearch(minID, maxID){
+  var jString = JSON.stringify(menuitems);
+  var itemss = eval(jString);
+  results = [];
+
+  for(var i=0; i<itemss.length; i++){
+    var ident = Number(itemss[i].ID);
+    if(ident > minID && ident < maxID){
+      results.push(itemss[i]);
+    }
+  }
+
+  return results;
+}*/
