@@ -26,12 +26,19 @@ block items
     +item(cNames[i], eNames[i], prices[i], imgs[i], remove)
   -}
 
+  -var totPrice = 0;
+  -for(var i=0; i<prices.length; i++){
+    -totPrice += Number(prices[i]);
+  -}
+  -totPrice = totPrice.toString();
+
+
   div.cartend
     a.left(href="/VarstVsty")
       h1 清空
     a.right(href="#alert1")
       h1 点单
-      h2 统计: ¥150
+      h2 统计: ¥#{totPrice}
 
   div.alert(id="alert1")
     div.popup
