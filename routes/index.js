@@ -2,11 +2,25 @@ var express = require('express');
 var router = express.Router();
 var cookieParser = require('cookie-parser');
 
+var fs = require('fs');
+var orderQueue = require('../orderQueue.json');
+
+//var orderQfd = fs.openSync(path.join(__dirname + '/orderQueue.json'));
+
+var saveTest = require('../saveTest.json');
 var menuitems = require('../menuitems.json');
 
 
+var orderQueueSize;
 
 
+// _____   ____  _    _ _______ ______  _____ //
+//|  __ \ / __ \| |  | |__   __|  ____|/ ____|//
+//| |__) | |  | | |  | |  | |  | |__  | (___  //
+//|  _  /| |  | | |  | |  | |  |  __|  \___ \ //
+//| | \ \| |__| | |__| |  | |  | |____ ____) |//
+//|_|  \_\\____/ \____/   |_|  |______|_____/ //
+//                                            //
 
 ///////////////////////////////////////////////////////////////////////
 ///////////////////M E N U   P A G E   R O U T E S/////////////////////
@@ -145,15 +159,72 @@ router.get('/cart', function(req,res){
 
 //Checkout (move each character right one key on keyboard)
 router.get('/Vjrvlpiy', function(req,res){
-  var orderObj = {};
-  if(req.cookies.cartCookie){
-    res.clearCookie('cartCookie');
-    res.send('Cookie Found and Cleared!');
+  var curOrderQueue = orderQueue;
+
+  //DEBUG
+  //res.send(curOrderQueue);
+  //
+
+  cartTemp = [];
+
+  if(req.cookies.cartCookie != null){
+    cartTemp = req.cookies.cartCookie;
   }
+
+  var jString = JSON.stringify(menuitems);
+  var items = eval(jString);
+
+  var cnNamesArr = [];
+  var pricesArr = [];
+
+  for (var i=0; i<cartTemp.length; i++) {
+    for(var x=0; x<items.length; x++){
+      if(cartTemp[i].toString() == items[x].ID.toString()){
+        cnNamesArr.push(("" + items[x].nameCN));
+        pricesArr.push(("" + items[x].price));
+      }
+    }
+  }
+
+  var orderObjTemp = {
+    "nameArray" : cnNamesArr,
+    "pricesArray" : pricesArr,
+    "totalPrice" : 0
+  };
+
+  curOrderQueue.OrderQArray.push(orderObjTemp);
+
+  toWriteString = JSON.stringify(curOrderQueue);
+
+  var fd = "";
+  fd = __dirname + '/../orderQueue.json';
+
+  fs.writeFileSync(fd, toWriteString);
+
+  //DEBUG
+  //res.send("File Written?  =>" + toWriteString);
+  //res.send(fd);
+  //
+
 });
 
+router.get('/Barista/OrderDone/:indnum?', function(req,res){
+  curOrderQueue = orderQueue;
+});
 
+router
 
+router.get('/BaristaView', function(req,res){
+  var curOrderQueue = orderQueue;
+
+  res.render('baristaa', {
+    title: 'BaristaView',
+
+    pageData : {
+      orderArray : curOrderQueue.OrderQArray
+    }
+  });
+});
 
 
 ///////////////////////////////////////////////////////////////////////
@@ -161,7 +232,7 @@ router.get('/Vjrvlpiy', function(req,res){
 ///////////////////////////////////////////////////////////////////////
 
 //Test Reading JSON file
-router.get('/jsoncheck', function(req,res){
+router.get('/test/jsoncheck', function(req,res){
 	//res.send(JSON.stringify(menuitems.items.template.name + ' III ID ... Price III ' + menuitems.items.template.category));
   var jString = JSON.stringify(menuitems);
   var arrayofObjects = eval(jString);
@@ -175,7 +246,7 @@ router.get('/jsoncheck', function(req,res){
 });
 
 //Testing Parsing URL HTTP Request
-router.get('/:num?', function(req,res){
+router.get('/test/:num?', function(req,res){
 	if(req.params.num)
     {
 		  res.send("Registered ID" + req.params.num);
@@ -187,19 +258,19 @@ router.get('/:num?', function(req,res){
 });
 
 //Test Cookie Write
-router.get('/jsontest/write', function(req,res){
+router.get('/test/jsontest/writeDef', function(req,res){
 	res.cookie('iii', 789562);
 	res.cookie('arr', [7,8,9,0]);
 	res.redirect('back');
 });
 
-router.get('/jsontest/write/:num?', function(req,res){
+router.get('/test/jsontest/write/:num?', function(req,res){
 	res.cookie('iii', req.params.num);
 	res.redirect('back');
 });
 
 //Test Cookie Read
-router.get('/jsontest/read', function(req,res){
+router.get('/test/jsontest/read', function(req,res){
 	//res.send(req.cookies.iii + ' iii and arr ' + req.cookies.arr);
   res.send(req.cookies.cartCookie);
 });
@@ -210,9 +281,14 @@ module.exports = router;
 
 
 
-///////////////////////////////////////////////////////////////////////
-/////////////////////////////M E T H O D S/////////////////////////////
-///////////////////////////////////////////////////////////////////////
+// __  __ ______ _______ _    _  ____  _____   _____ //
+//|  \/  |  ____|__   __| |  | |/ __ \|  __ \ / ____|//
+//| \  / | |__     | |  | |__| | |  | | |  | | (___  //
+//| |\/| |  __|    | |  |  __  | |  | | |  | |\___ \ //
+//| |  | | |____   | |  | |  | | |__| | |__| |____) |//
+//|_|  |_|______|  |_|  |_|  |_|\____/|_____/|_____/ //
+//                                                   //
+
 
 function itemPageRender(reqObj, resObj, catName, minSID, maxSID){
   var curCartCount = 0;
@@ -255,8 +331,6 @@ function itemPageRender(reqObj, resObj, catName, minSID, maxSID){
   });
 }
 
-
-
 function itemSearch(minID, maxID){
   var jString = JSON.stringify(menuitems);
   var itemss = eval(jString);
@@ -269,6 +343,5 @@ function itemSearch(minID, maxID){
       results.push(itemss[i]);
     }
   }
-
   return results;
 }
