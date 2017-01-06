@@ -4,6 +4,14 @@ var cookieParser = require('cookie-parser');
 
 var menuitems = require('../menuitems.json');
 
+
+
+
+
+///////////////////////////////////////////////////////////////////////
+///////////////////M E N U   P A G E   R O U T E S/////////////////////
+///////////////////////////////////////////////////////////////////////
+
 router.get('/', function(req, res){
   res.redirect('/tea');
   /*var curCartCount = 0;
@@ -37,6 +45,14 @@ router.get('/drinks', function(req, res){
 router.get('/foods', function(req, res){
   itemPageRender(req, res, '食品', 400, 500);
 });
+
+
+
+
+
+///////////////////////////////////////////////////////////////////////
+///////////////////////C A R T   R O U T E S///////////////////////////
+///////////////////////////////////////////////////////////////////////
 
 //Add To Cart (move each character right one key on keyboard)
 router.get('/SffYpVsty/:idnum?', function(req,res){
@@ -100,12 +116,11 @@ router.get('/cart', function(req,res){
     }
   }
 
-  
+  //DEBUG
   //res.send(enNamesArr);
   //res.send(cnNamesArr);
   //res.send(pricesArr);
   //res.send(imgDirsArr);
-  
   
   res.render('cart', {
     title: 'Cart',
@@ -118,11 +133,32 @@ router.get('/cart', function(req,res){
       imgsAr : imgDirsArr
     }
   });
-
-
 });
 
 
+
+
+
+///////////////////////////////////////////////////////////////////////
+///////////////////////O T H E R   R O U T E S/////////////////////////
+///////////////////////////////////////////////////////////////////////
+
+//Checkout (move each character right one key on keyboard)
+router.get('/Vjrvlpiy', function(req,res){
+  var orderObj = {};
+  if(req.cookies.cartCookie){
+    res.clearCookie('cartCookie');
+    res.send('Cookie Found and Cleared!');
+  }
+});
+
+
+
+
+
+///////////////////////////////////////////////////////////////////////
+/////////////////////D A T A   H A N D L I N G/////////////////////////
+///////////////////////////////////////////////////////////////////////
 
 //Test Reading JSON file
 router.get('/jsoncheck', function(req,res){
@@ -170,9 +206,13 @@ router.get('/jsontest/read', function(req,res){
 
 module.exports = router;
 
-function SenderinoRenderino(strr){
-  res.send(strr);
-}
+
+
+
+
+///////////////////////////////////////////////////////////////////////
+/////////////////////////////M E T H O D S/////////////////////////////
+///////////////////////////////////////////////////////////////////////
 
 function itemPageRender(reqObj, resObj, catName, minSID, maxSID){
   var curCartCount = 0;
