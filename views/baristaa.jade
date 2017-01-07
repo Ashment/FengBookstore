@@ -1,10 +1,11 @@
 mixin displayOrderItem(name, price)
   h1 #{name}: ¥#{price}
 
-mixin displayOrder(order)
+mixin displayOrder(order, ind)
   div#order
+    -var refInd = '/Barista/OrderDone/' + ind.toString();
     h1 ______________________________________________
-    a.button(href="")
+    a.button(href=refInd)
     -var totalPrice = 0;
     -for(var i=0; i<order.nameArray.length; i++){
       -totalPrice += Number(order.pricesArray[i]);
@@ -36,5 +37,5 @@ html
 
     div#display
       -for(var i=0; i<pageData.orderArray.length; i++){
-        +displayOrder(pageData.orderArray[i])
+        +displayOrder(pageData.orderArray[i], i)
       -}

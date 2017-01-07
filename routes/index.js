@@ -177,7 +177,7 @@ router.get('/Vjrvlpiy', function(req,res){
 
     var cnNamesArr = [];
     var pricesArr = [];
-
+    
     for (var i=0; i<cartTemp.length; i++) {
       for(var x=0; x<items.length; x++){
         if(cartTemp[i].toString() == items[x].ID.toString()){
@@ -200,6 +200,7 @@ router.get('/Vjrvlpiy', function(req,res){
     fd = __dirname + '/../orderQueue.json';
 
     fs.writeFileSync(fd, toWriteString);
+
   }else{
     res.send('Cart is empty.');
   }
@@ -216,6 +217,20 @@ router.get('/Vjrvlpiy', function(req,res){
 
 router.get('/Barista/OrderDone/:indnum?', function(req,res){
   curOrderQueue = orderQueue;
+  curOrderArray = curOrderQueue.OrderQArray;
+
+  if(req.params.indnum < curOrderArray.length){
+    curOrderArray.splice(req.params.indnum, 1);
+  }
+
+  toWriteString = JSON.stringify(curOrderQueue);
+
+  var fd = "";
+  fd = __dirname + '/../orderQueue.json';
+
+  fs.writeFileSync(fd, toWriteString);
+
+  res.redirect('/BaristaView');
 });
 
 router
