@@ -3,12 +3,12 @@ var router = express.Router();
 var cookieParser = require('cookie-parser');
 
 var fs = require('fs');
-var orderQueue = require('../orderQueue.json');
+var orderQueue = require(__dirname + '/../orderQueue.json');
 
 //var orderQfd = fs.openSync(path.join(__dirname + '/orderQueue.json'));
 
-var saveTest = require('../saveTest.json');
-var menuitems = require('../menuitems.json');
+var saveTest = require(__dirname + '/../saveTest.json');
+var menuitems = require(__dirname + '/../menuitems.json');
 
 
 var orderQueueSize;
