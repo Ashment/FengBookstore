@@ -20,11 +20,7 @@ block items
 
   -var curCount = pageData.cartCount;
 
-  -for(var i=0; i<curCount; i++){
-    -var remove = "/TrzpbrGtpzVsty/" + i.toString();
-    -var prce = "¥" + prices[i].toString();
-    +item(cNames[i], eNames[i], prices[i], imgs[i], remove)
-  -}
+  
 
   -var totPrice = 0;
   -for(var i=0; i<prices.length; i++){
@@ -39,7 +35,13 @@ block items
         h1 清空
       a.right(href="#alert1")
         h1 点单
-        h2 统计: ¥#{totPrice}
+        h2 合计: ¥#{totPrice}
+  -}
+
+  -for(var i=0; i<curCount; i++){
+    -var remove = "/TrzpbrGtpzVsty/" + i.toString();
+    -var prce = "¥" + prices[i].toString();
+    +item(cNames[i], eNames[i], prices[i], imgs[i], remove)
   -}
 
   div.alert(id="alert1")

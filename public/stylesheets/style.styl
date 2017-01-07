@@ -233,6 +233,7 @@ body
   border-bottom 1px solid darken(main-color, 30%)
   text-shadow 0px -1px 0px darken(main-color, 30%)
   div#display
+    overflow auto
     width 100vw
     height 92vh
     margin-top 6vh
@@ -241,25 +242,37 @@ body
     line-height 1.2
     div#order
       margin-bottom 10px
+      padding-bottom 5vh
       h1
         margin-left 5px
       a
         display block
         width 7vh
-        height 15vh
+        height 8vh
         margin-right 70vw
-        margin-top -1.2vh
+        margin-top -0.5vh
         float right
         background darken(#6fce8f, 15%)
         border-radius 10px
-  div#orderConfirmation
-    display block
-    text-align center
-    left 0
-    right 0
-    bottom 0
-    top 8vh
-    background lighten(main-color, 20%)
+    h2
+      margin-top 10vh
+      text-align center
+      font-size 50px
+      margin-bottom 5vh
+    h3
+      text-align center
+      font-size 30px
+      margin-bottom 10vh
+    a.afterCheckout
+      display block
+      width 55vw
+      text-align center
+      height 10vh
+      margin-left 50% - 27.5vw
+      border-radius 10px
+      background darken(#6fce8f, 15%)
+      padding-top 5vh
+      font-size 5vh
 
 .container
   width 100vw

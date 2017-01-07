@@ -340,6 +340,7 @@ body {
   text-shadow: 0px -1px 0px #744227;
 }
 body div#display {
+  overflow: auto;
   width: 100vw;
   height: 92vh;
   margin-top: 6vh;
@@ -349,6 +350,7 @@ body div#display {
 }
 body div#display div#order {
   margin-bottom: 10px;
+  padding-bottom: 5vh;
 }
 body div#display div#order h1 {
   margin-left: 5px;
@@ -356,12 +358,34 @@ body div#display div#order h1 {
 body div#display div#order a {
   display: block;
   width: 7vh;
-  height: 15vh;
+  height: 8vh;
   margin-right: 70vw;
-  margin-top: -1.4vh;
+  margin-top: -0.5vh;
   float: right;
   background: #4cc273;
   border-radius: 10px;
+}
+body div#display h2 {
+  margin-top: 10vh;
+  text-align: center;
+  font-size: 50px;
+  margin-bottom: 5vh;
+}
+body div#display h3 {
+  text-align: center;
+  font-size: 30px;
+  margin-bottom: 10vh;
+}
+body div#display a.afterCheckout {
+  display: block;
+  width: 55vw;
+  text-align: center;
+  height: 10vh;
+  margin-left: 22.5%;
+  border-radius: 10px;
+  background: #4cc273;
+  padding-top: 5vh;
+  font-size: 5vh;
 }
 .container {
   width: 100vw;

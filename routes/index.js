@@ -207,7 +207,9 @@ router.get('/Vjrvlpiy', function(req,res){
 
 
     res.clearCookie('cartCookie');
-    res.redirect('back');
+    res.render('confirmation', {
+      title: "下单成功"
+    });
 
   //DEBUG
   //res.send("File Written?  =>" + toWriteString);
