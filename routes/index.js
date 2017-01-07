@@ -165,47 +165,53 @@ router.get('/Vjrvlpiy', function(req,res){
   //res.send(curOrderQueue);
   //
 
-  cartTemp = [];
+  if(req.cookies.cartCookie){
+    cartTemp = [];
 
-  if(req.cookies.cartCookie != null){
-    cartTemp = req.cookies.cartCookie;
-  }
+    if(req.cookies.cartCookie != null){
+      cartTemp = req.cookies.cartCookie;
+    }
 
-  var jString = JSON.stringify(menuitems);
-  var items = eval(jString);
+    var jString = JSON.stringify(menuitems);
+    var items = eval(jString);
 
-  var cnNamesArr = [];
-  var pricesArr = [];
+    var cnNamesArr = [];
+    var pricesArr = [];
 
-  for (var i=0; i<cartTemp.length; i++) {
-    for(var x=0; x<items.length; x++){
-      if(cartTemp[i].toString() == items[x].ID.toString()){
-        cnNamesArr.push(("" + items[x].nameCN));
-        pricesArr.push(("" + items[x].price));
+    for (var i=0; i<cartTemp.length; i++) {
+      for(var x=0; x<items.length; x++){
+        if(cartTemp[i].toString() == items[x].ID.toString()){
+          cnNamesArr.push(("" + items[x].nameCN));
+          pricesArr.push(("" + items[x].price));
+        }
       }
     }
+
+    var orderObjTemp = {
+      "nameArray" : cnNamesArr,
+      "pricesArray" : pricesArr
+    };
+
+    curOrderQueue.OrderQArray.push(orderObjTemp);
+
+    toWriteString = JSON.stringify(curOrderQueue);
+
+    var fd = "";
+    fd = __dirname + '/../orderQueue.json';
+
+    fs.writeFileSync(fd, toWriteString);
+  }else{
+    res.send('Cart is empty.');
   }
 
-  var orderObjTemp = {
-    "nameArray" : cnNamesArr,
-    "pricesArray" : pricesArr,
-    "totalPrice" : 0
-  };
 
-  curOrderQueue.OrderQArray.push(orderObjTemp);
-
-  toWriteString = JSON.stringify(curOrderQueue);
-
-  var fd = "";
-  fd = __dirname + '/../orderQueue.json';
-
-  fs.writeFileSync(fd, toWriteString);
+    res.clearCookie('cartCookie');
+    res.redirect('back');
 
   //DEBUG
   //res.send("File Written?  =>" + toWriteString);
   //res.send(fd);
   //
-
 });
 
 router.get('/Barista/OrderDone/:indnum?', function(req,res){
