@@ -292,33 +292,34 @@ div.alert div.popup {
   position: relative;
   display: block;
   border-radius: 15px;
-  margin-left: 20vw;
-  width: 30vw;
-  height: 30vh;
+  margin-left: 12.5vw;
+  width: 50vw;
+  height: 25vh;
   text-align: center;
   background: #385077;
 }
 div.alert div.popup h1 {
   margin-top: 10vw;
   padding-top: 5vh;
-  font-size: 5vw;
+  font-size: 25px;
 }
 div.alert div.popup a {
   display: block;
-  width: 10vw;
-  height: 5vh;
+  width: 15vw;
+  height: 3.5vh;
   border-radius: 10px;
-  margin-top: 3vw;
+  margin-top: 7vh;
   padding-top: 2vh;
+  font-size: 10px;
 }
 div.alert div.popup a#cancel {
   float: left;
-  margin-left: 3vw;
+  margin-left: 4vw;
   background: #db5353;
 }
 div.alert div.popup a#confirm {
   float: right;
-  margin-right: 3vw;
+  margin-right: 4vw;
   background: #4cc273;
 }
 div.alert:target {
@@ -337,6 +338,30 @@ body {
   background-color: #a55e38;
   border-bottom: 1px solid #744227;
   text-shadow: 0px -1px 0px #744227;
+}
+body div#display {
+  width: 100vw;
+  height: 92vh;
+  margin-top: 6vh;
+  padding-top: 6vh;
+  background: #4d4d4d;
+  line-height: 1.2;
+}
+body div#display div#order {
+  margin-bottom: 10px;
+}
+body div#display div#order h1 {
+  margin-left: 5px;
+}
+body div#display div#order a {
+  display: block;
+  width: 7vh;
+  height: 15vh;
+  margin-right: 70vw;
+  margin-top: -1.4vh;
+  float: right;
+  background: #4cc273;
+  border-radius: 10px;
 }
 .container {
   width: 100vw;

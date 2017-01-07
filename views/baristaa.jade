@@ -3,12 +3,16 @@ mixin displayOrderItem(name, price)
 
 mixin displayOrder(order)
   div#order
+    h1 ______________________________________________
     a.button(href="")
+    -var totalPrice = 0;
     -for(var i=0; i<order.nameArray.length; i++){
+      -totalPrice += Number(order.pricesArray[i]);
       +displayOrderItem(order.nameArray[i], order.pricesArray[i])
     -}
-    h1 _______________________
-    h1 统计价钱: ¥#{order.totalPrice}
+    h1 _ _ _ _ _ _ _ _ _ _ _ _
+    h1 统计: ¥#{totalPrice}
+    h1 ______________________________________________
 
 
 doctype
